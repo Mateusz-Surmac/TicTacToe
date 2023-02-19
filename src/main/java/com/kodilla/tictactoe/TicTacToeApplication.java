@@ -1,13 +1,26 @@
 package com.kodilla.tictactoe;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
 public class TicTacToeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TicTacToeApplication.class, args);
+        System.out.println("Welcome to the TicTacToe game!");
+        startGame();
     }
+    public static void startGame() {
+        GameStart gameStart = new GameStart();
+        ComputerMove computerMove = new ComputerMove();
+        Game game = new Game();
 
+        gameStart.setSinglePlayer();
+        if (gameStart.isSinglePlayer()) {
+            gameStart.setDifficultyLevel();
+            computerMove.setName();
+        }
+        gameStart.setPlayer1Name();
+        if (!gameStart.isSinglePlayer()) {gameStart.setPlayer2Name();}
+        gameStart.setBoardSize();
+
+        game.drawBoard();
+        game.makeMove();
+    }
 }
